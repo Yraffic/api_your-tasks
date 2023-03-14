@@ -1,16 +1,24 @@
 import { Router } from 'express'
-import { 
-        deteialProject, 
-        projectList 
-        
-    } from './controller/controllerProjects'
+import {
+    createProject,
+    deleteProject,
+    deteialProject,
+    projectList,
+    updateProject
+} from './controller/controllerProjects'
 
 const rotas = Router()
 
-//listar projetos
+
 rotas.get('/projetos', projectList)
-//detalhar projeto
+
 rotas.get('/projetos/:id', deteialProject)
+
+rotas.post('/projetos', createProject)
+
+rotas.put('/projetos/:id', updateProject)
+
+rotas.delete('/projetos/:id', deleteProject)
 
 
 export default rotas
