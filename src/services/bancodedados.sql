@@ -5,11 +5,10 @@ create table project (
   createdAt timestamp null default current_timestamp
 )
 
-create table tasks (
-  task_id serial primary key,
-  description text,
-  createdAt timestamp null default current_timestamp,
-  date_close date,
-  project_id integer not null,
-  foreign key (project_id) references project(id)
+CREATE TABLE tasks (
+  task_id SERIAL PRIMARY KEY,
+  description TEXT,
+  created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  date_close DATE,
+  project_id INTEGER NOT NULL REFERENCES project(id)
 );

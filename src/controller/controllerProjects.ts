@@ -8,7 +8,7 @@ export const projectList = async(_: Request, res: Response)=>{
 
         return res.status(200).json(projects)
     } catch{
-        res.status(500).json({mensage:'erro no servidor!'})
+        res.status(500).json({message:'erro no servidor!'})
     }
 }
 
@@ -18,12 +18,12 @@ export const deteialProject = async (req: Request, res: Response) => {
         const project = await knex<Project>('project').where({id: Number(id)}).first()
 
         if(!project){
-            res.status(404).json({mensage:'Projeto não existe!'})
+            res.status(404).json({message:'Projeto não existe!'})
         }
 
         return res.status(200).json(project)
     } catch {
-        res.status(500).json({mensage:'erro no servidor!'})
+        res.status(500).json({message:'erro no servidor!'})
     }
 }
 
@@ -39,7 +39,7 @@ export const createProject = async (req: Request, res: Response) => {
         return res.status(201).json(project)
     } catch (error){
         console.log(error)
-        res.status(500).json({mensage:'erro no servidor!'})
+        res.status(500).json({message:'erro no servidor!'})
     }
 }
 
@@ -53,7 +53,7 @@ export const updateProject = async (req: Request, res: Response) => {
         const project = await knex<Project>('project').where({id: Number(id)}).first()
 
         if(!project){
-            res.status(404).json({mensage:'Projeto não existe!'})
+            res.status(404).json({message:'Projeto não existe!'})
         }
 
 
@@ -62,9 +62,9 @@ export const updateProject = async (req: Request, res: Response) => {
             description
         })
 
-        return res.status(204).json({mensagem: 'projeto atualizado!'})
+        return res.status(204).json({message: 'projeto atualizado!'})
     } catch {
-        res.status(500).json({mensage:'erro no servidor!'})
+        res.status(500).json({message:'erro no servidor!'})
     }
 }
 
@@ -76,13 +76,13 @@ export const deleteProject =async (req: Request, res: Response) => {
             .first()
 
         if (!carro) {
-            return res.status(404).json({ mensagem: 'Carro não encontrado.' })
+            return res.status(404).json({ message: 'Carro não encontrado.' })
         }
 
         await knex('project').where({id: Number(id)}).del()
 
         return res.status(204).send()
     } catch {
-        res.status(500).json({mensage:'erro no servidor!'})
+        res.status(500).json({message:'erro no servidor!'})
     }
 }

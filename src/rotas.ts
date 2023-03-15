@@ -6,6 +6,9 @@ import {
     projectList,
     updateProject
 } from './controller/controllerProjects'
+import {
+    getTasksByProjectId
+} from './controller/controllerTasks'
 
 const rotas = Router()
 
@@ -20,5 +23,6 @@ rotas.put('/projetos/:id', updateProject)
 
 rotas.delete('/projetos/:id', deleteProject)
 
+rotas.get('/tarefas/:project_id', getTasksByProjectId)
 
 export default rotas
