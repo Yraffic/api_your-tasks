@@ -5,7 +5,7 @@ export type Project = {
     createdAt: Date
 }
 
-export type Taks = {
+export type Task = {
     task_id: string | number,
     description: string,
     date_close: string,
